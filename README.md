@@ -23,5 +23,6 @@ something equivalent to :
     while (data[0] != 0) {
         data[1] -= 6;
         data[2] -= 6;
+        data[0] --;
     }
 
