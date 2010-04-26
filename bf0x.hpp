@@ -144,8 +144,6 @@ template <class bstack, char... tail> struct interpreter<bstack, '[', tail...> {
         while (st.data[st.pos]) {
             for (int i=0; i<bstack::size; ++i) BF0X_TRACE("  ");
 
-            // TODO This is where memory must be reserved
-
             top<typename bstack::template push<loop_interpreter>::type
                 , tail...>::type::exec(st);
         }
@@ -159,7 +157,7 @@ template <class bstack, char... tail> struct interpreter<bstack, '[', tail...> {
 
 // We can use the default interpreter implementation for evaluating since
 // interpreter code take care of using the top-of-stack for parsing next
-// char, which will correctly call bracked_interpreter for next-char
+// char, which will correctly call loop_interpreter for next-char
 template <class bstack, char c, char... tail> struct loop_interpreter<bstack, c, tail...> {
     // let the base interpreter interpret this char
     static void exec(state& st) {
