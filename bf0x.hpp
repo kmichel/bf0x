@@ -135,7 +135,7 @@ template <class bstack, char... tail> struct interpreter<bstack, ',', tail...> {
     }
 };
 
-// A slighlty more complex case, we want to do compile-time detection of 
+// A slightly more complex case, we want to do compile-time detection of 
 // loop pattern (aka. balanced brackets)
 // We parse inside of the loop with one parser and outside with another
 template <class bstack, char... tail> struct interpreter<bstack, '[', tail...> {
@@ -155,7 +155,6 @@ template <class bstack, char... tail> struct interpreter<bstack, '[', tail...> {
         top<typename bstack::template push<tail_interpreter>::type
             , tail...>::type::exec(st);
     }
-    // TODO
 };
 
 // We can use the default interpreter implementation for evaluating since
@@ -166,7 +165,6 @@ template <class bstack, char c, char... tail> struct loop_interpreter<bstack, c,
     static void exec(state& st) {
         interpreter<bstack, c, tail...>::exec(st);    
     }
-    // TODO check
 };
 
 template <class bstack, char... tail> struct loop_interpreter<bstack, ']', tail...> {
@@ -181,7 +179,6 @@ template <class bstack, char c, char... tail> struct tail_interpreter<bstack, c,
         // ignore char and continue parsing using itself
         top<bstack, tail...>::type::exec(st);
     }
-    // TODO check
 };
 
 template <class bstack, char... tail> struct tail_interpreter<bstack, '[', tail...> {
