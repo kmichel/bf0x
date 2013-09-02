@@ -68,7 +68,7 @@ template <class stack> struct loop_interpreter<stack> {
     static void exec(state&) {}
 };
 
-// The basing parsing functions :
+// The basic parsing functions :
 // - pop a char from the tail
 // - execute corresponding code
 // - parse the rest with the top-of-stack interpreter
