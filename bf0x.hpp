@@ -56,13 +56,6 @@ template <class, char...> struct interpreter;
 template <class, char...> struct loop_interpreter;
 template <class, char...> struct tail_interpreter;
 
-#if EXTENSIBLE_LITERALS_SUPPORTED
-template<char... chars> 
-interpreter<chars...> operator "" BF()  {
-    return interpreter<bstack<interpreter>, chars...>();
-}
-#endif
-
 template <class stack> struct interpreter<stack> {
     static void exec(state&) {}
 };

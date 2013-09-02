@@ -1,12 +1,16 @@
 # bf0x
 A static brainfuck compiler in c++0x.
 
-Code is fed to the compiler using a big ugly variadic template or much better
-(but not yet supported by gcc) a string with the custom litteral suffix `BF`.
+Code is fed to the compiler using a big ugly variadic template.
 
-    auto multiply = ",>,>++++++++[<------<------>>-]"
-                    "<<[>[>+>+<<-]>>[<<+>>-]<<<-]"
-                    ">>>++++++[<++++++++>-],<.>."BF;
+    auto multiply = bf0x::interpreter<bf0x::bstack<bf0x::interpreter>,
+         ',','>',',','>','+','+','+','+','+','+','+','+','[','<','-','-',
+         '-','-','-','-','<','-','-','-','-','-','-','>','>','-',']','<',
+         '<','[','>','[','>','+','>','+','<','<','-',']','>','>','[',
+         '<','<','+','>','>','-',']','<','<','<','-',']','>','>','>',
+         '+','+','+','+','+','+','[','<','+','+','+','+',
+         '+','+','+','+','>','-',']',',','<','.','>','.'>();
+    
     bf0x::state st;
     multiply.exec(st);
 
