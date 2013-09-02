@@ -11,3 +11,6 @@ CXXFLAGS += -Os -march=native
 CXXFLAGS += -finline-functions -finline-small-functions -findirect-inlining
 
 main : main.cpp
+
+clean :
+	rm main
